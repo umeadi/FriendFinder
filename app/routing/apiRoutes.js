@@ -3,8 +3,8 @@ var friends = require("../data/friends")
 module.exports =function(app){
     app.get("/api/friends", function(req, res) {
         res.json(friends);
-    })
-    app.post("api/friends", function(req, res) {
+    });
+    app.post("/api/friends", function(req, res) {
         var bestMatch = {
             name: "",
             photo: "",
@@ -26,7 +26,7 @@ module.exports =function(app){
                 totalDiff += Math.abs(parseInt(currentUserScore) - parseInt(currentFriendScore)); //(2 -1) // 1 +(3-4) //2+(1-3)
                     //1 //2 //4
             }
-            if(totalDiff <=betMatch.friendDiff){
+            if(totalDiff <=bestMatch.friendDiff){
                 
                 bestMatch.name = currentFriend.name;
                 bestMatch.photo = currentFriend.photo;
